@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Exam</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Online Exam</h1>
+
+        <div id="timer">Time Remaining: 10:00</div>
+
+        <form method="POST" action="/result">
+
+            <div class="question">
+                <h3>1. Which language is used for Flask?</h3>
+
+                <input type="radio" name="q1" value="Python" required>
+                Python
+                <br>
+
+                <input type="radio" name="q1" value="Java">
+                Java
+                <br>
+
+                <input type="radio" name="q1" value="C++">
+                C++
+            </div>
+
+            <div class="question">
+                <h3>2. Which symbol is used for comments in Python?</h3>
+
+                <input type="radio" name="q2" value="a" required>
+                #
+                <br>
+
+                <input type="radio" name="q2" value="b">
+                //
+                <br>
+
+                <input type="radio" name="q2" value="c">
+                /*
+            </div>
+
+            <div class="question">
+                <h3>3. Which technology is used for styling web pages?</h3>
+
+                <input type="radio" name="q3" value="CSS" required>
+                CSS
+                <br>
+
+                <input type="radio" name="q3" value="HTML">
+                HTML
+                <br>
+
+                <input type="radio" name="q3" value="Python">
+                Python
+            </div>
+
+            <button type="submit">Submit Exam</button>
+
+        </form>
+
+    </div>
+
+    <script>
+        let time = 10 * 60;
+
+        const timer = setInterval(function () {
+
+            let minutes = Math.floor(time / 60);
+            let seconds = time % 60;
+
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            document.getElementById("timer").innerHTML =
+                "Time Remaining: " + minutes + ":" + seconds;
+
+            if (time <= 0) {
+                clearInterval(timer);
+
+                document.getElementById("timer").innerHTML =
+                    "Time is over!";
+
+                document.querySelector("form").submit();
+            }
+
+            time--;
+
+        }, 1000);
+    </script>
+
+</body>
+</html>

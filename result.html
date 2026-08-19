@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container result">
+
+        <h1>Exam Result</h1>
+
+        <h2>Student Name: {{ student_name }}</h2>
+
+        <h2>Your Score</h2>
+
+        <h3>{{ score }} / {{ total }}</h3>
+
+        <p>Percentage: {{ percentage }}%</p>
+
+        <p>
+            Status:
+            {% if status == "Pass" %}
+                <span class="pass">{{ status }}</span>
+            {% else %}
+                <span class="fail">{{ status }}</span>
+            {% endif %}
+        </p>
+
+        <br>
+
+        <a href="/">Take Exam Again</a>
+
+    </div>
+
+</body>
+</html>
